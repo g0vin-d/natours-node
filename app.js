@@ -7,6 +7,7 @@ const xss = require('xss-clean');
 const helmet = require('helmet');
 const hpp = require('hpp');
 const cookieParser = require('cookie-parser');
+const compression = require('compression');
 const globalErrorHandler = require('./controller/errorController');
 const AppError = require('./utils/appError');
 const tourRouter = require('./routes/tourRoutes');
@@ -105,6 +106,8 @@ app.use(
     ],
   })
 );
+
+app.use(compression());
 
 // limiting the request per api
 const limiter = rateLimit({

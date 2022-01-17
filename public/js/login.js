@@ -6,7 +6,7 @@ export const login = async (email, password) => {
   try {
     const res = await axios({
       method: 'post',
-      url: 'http://127.0.0.1:8000/api/v1/users/login',
+      url: '/api/v1/users/login',
       data: {
         email,
         password,
@@ -28,12 +28,12 @@ export const logout = async () => {
   try {
     const res = await axios({
       method: 'GET',
-      url: 'http://127.0.0.1:8000/api/v1/users/logout',
+      url: '/api/v1/users/logout',
     });
 
     if ((res.data.status = 'success')) location.assign('/');
   } catch (err) {
-    console.log(err);
+    // console.log(err);
     showAlert('error', 'There is an error, Please try again');
   }
 };
